@@ -40,7 +40,7 @@ function updateDOM() {
     timeElements[2].textContent = `${minutes}`;
     timeElements[3].textContent = `${seconds}`;
 
-    //   Hide Input
+    // Hide Input
     inputContainer.hidden = true;
     // Show Countdown
     countdownEl.hidden = false;
@@ -53,10 +53,15 @@ function updateCountdown(e) {
   countdownTitle = e.srcElement[0].value;
   countdownDate = e.srcElement[1].value;
   console.log(countdownTitle, countdownDate);
-  //   get number version of current Date, update DOM
-  countdownValue = new Date(countdownDate).getTime();
-  console.log("countdown value", countdownValue);
-  updateDOM();
+  // Check for valid date
+  if (countdownDate === "") {
+    alert("Please select a date for the countdaown.");
+  } else {
+    // Get number version of current Date, update DOM
+    countdownValue = new Date(countdownDate).getTime();
+    console.log("countdown value", countdownValue);
+    updateDOM();
+  }
 }
 
 // Reset All Values
